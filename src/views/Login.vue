@@ -75,7 +75,7 @@
       }
     },
     methods: {
-      submitHandler() {
+      async submitHandler() {
         if(this.$v.$invalid) {
           this.$v.$touch()
           return
@@ -84,8 +84,13 @@
           email: this.email,
           password: this.password
         }
-        this.$router.push('/')
-        console.log(formData)
+        
+        try {
+          await this.$store.dispatch('login', formData)
+          this.$router.push('/')
+          console.log(formData)
+          // eslint-disable-next-line no-empty
+        } catch (e) {}
       }
     }
   }
