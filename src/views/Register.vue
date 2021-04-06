@@ -100,7 +100,7 @@
       agree: {checked: v => v}
     },
     methods: {
-      onSubmit() {
+      async onSubmit() {
         if(this.$v.$invalid) {
           this.$v.$touch()
           return
@@ -110,8 +110,12 @@
           password: this.password,
           name: this.name
         }
-        this.$router.push('/')
-        console.log(formData)
+        try {
+          await this.$store.dispatch('register',formData)
+          this.$router.push('/')
+          // eslint-disable-next-line no-empty
+        } catch (e) {}
+
       }
     }
   }
