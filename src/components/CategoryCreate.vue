@@ -29,7 +29,8 @@
           <label for="limit">Лимит</label>
           <span
             v-if="$v.limit.$dirty && !$v.limit.minValue"
-            class="helper-text invalid">Минимальная величина {{$v.limit.$params.minValue.min}}</span>
+            class="helper-text invalid">
+            Минимальная величина {{$v.limit.$params.minValue.min}}</span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
@@ -43,7 +44,6 @@
 
 <script>
   import {required,minValue} from "vuelidate/lib/validators"
-  import {mapActions} from "vuex"
 
   export default {
     name: "CategoryCreate",
@@ -60,7 +60,6 @@
       M.updateTextFields();
     },
     methods: {
-      ...mapActions(['CategoryCreate']),
       async oNsubmit() {
         if (this.$v.$invalid) {
           this.$v.$touch()

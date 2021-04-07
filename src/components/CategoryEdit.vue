@@ -5,27 +5,42 @@
         <h4>Редактировать</h4>
       </div>
 
-      <form>
+      <form @submit.prevent="submitHendler">
         <div class="input-field" >
-          <select>
-            <option>Category</option>
+          <select ref="select" v-model="current">
+            <option
+              v-for="op in categories"
+              :key="op.id"
+              :value="op.id"
+            >{{op.title}}</option>
           </select>
           <label>Выберите категорию</label>
         </div>
 
         <div class="input-field">
-          <input type="text" id="name">
+          <input
+            type="text"
+            id="name"
+            v-model="title"
+            :class="{invalid: ($v.title.$dirty && !$v.title.required)}"
+          >
           <label for="name">Название</label>
-          <span class="helper-text invalid">TITLE</span>
+          <span v-if="$v.title.$dirty && !$v.title.required"
+                class="helper-text invalid">Введите название категории</span>
         </div>
 
         <div class="input-field">
           <input
             id="limit"
             type="number"
+            v-model.number="limit"
+            :class="{invalid: ($v.limit.$dirty && !$v.limit.minValue)}"
           >
           <label for="limit">Лимит</label>
-          <span class="helper-text invalid">LIMIT</span>
+          <span
+            v-if="$v.limit.$dirty && !$v.limit.minValue"
+            class="helper-text invalid">
+            Минимальная величина {{$v.limit.$params.minValue.min}}</span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
@@ -38,7 +53,67 @@
 </template>
 
 <script>
-    export default {
-        name: "EditCategories"
+  import {required, minValue} from 'vuelidate/lib/validators'
+  export default {
+    props: {
+      categories: {
+        type: Array,
+        required: true,
+      }
+    },
+    name: "EditCategories",
+    data:() => ({
+      select: null,
+      title: '',
+      limit: '',
+      current: null
+    }),
+    validations: {
+      title: {required},
+      limit: {minValue: minValue(100)}
+    },
+    methods: {
+      async submitHendler() {
+        if (this.$v.$invalid) {
+          this.$v.$touch()
+          return
+        }
+        try {
+          const categoryData = {
+            id: this.current,
+            title: this.title,
+            limit: this.limit
+          }
+          await this.$store.dispatch('CategoryUpdate', categoryData)
+          this.$message('Категория успешно обновлена')
+          this.$emit('updated', categoryData)
+          // eslint-disable-next-line no-empty
+        } catch (e) {}
+      }
+    },
+    watch: {
+      current(catId) {
+        const {title, limit} = this.categories.find(c=>c.id === catId)
+        this.title = title
+        this.limit = limit
+      }
+    },
+    created() {
+      const {id, title, limit} = this.categories[0]
+      this.current = id
+      this.title = title
+      this.limit = limit
+    },
+    mounted() {
+      // eslint-disable-next-line no-undef
+      M.updateTextFields();
+      // eslint-disable-next-line no-undef
+      this.select = M.FormSelect.init(this.$refs.select)
+    },
+    destroyed() {
+      if (this.select && this.select.destroy) {
+        this.select.destroy()
+      }
     }
+  }
 </script>
