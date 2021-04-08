@@ -15,7 +15,7 @@
     <tr v-for="(record, idx) in records" :key="record.id">
       <td>{{idx + 1}}</td>
       <td>{{record.amount | currency('RUB')}}</td>
-      <td>{{record.date | dete('datetime')}}</td>
+      <td>{{record.date | date('datetime')}}</td>
       <td>{{record.categoryName}}</td>
       <td>
         <span class="white-text badge"
