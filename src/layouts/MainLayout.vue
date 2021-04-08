@@ -25,6 +25,7 @@
 <script>
   import Navbar from '@/components/app/Navbar'
   import Sitebar from '@/components/app/Sitebar'
+  import messages from "../utils/messages";
   export default {
     name: 'main-layout',
     data: () => ({
@@ -40,6 +41,17 @@
     components: {
       Navbar,
       Sitebar
+    },
+    computed: {
+      error() {
+        return this.$store.getters.error
+      }
+    },
+    watch: {
+      error(fbError) {
+        this.$error(messages[fbError.code] || 'Что-то пошло не так')
+      }
     }
+
   }
 </script>
