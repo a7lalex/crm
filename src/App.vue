@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <component :is="layout">
+    <component :is="layout" :key="locale">
       <router-view  />
     </component>
   </div>
@@ -13,6 +13,9 @@
     computed: {
       layout() {
         return (this.$route.meta.layout || 'empty') + '-layout'
+      },
+      locale() {
+        return this.$store.getters.info.locale
       }
     },
     components: {
