@@ -16,7 +16,7 @@
           <strong>{{cat.title}}</strong>
           {{cat.spend | currency}} из {{cat.limit | currency}}
         </p>
-        <div class="progress" v-tooltip="cat.tooltip">
+        <div class="progress" v-tooltip="{text: `${cat.tooltip}`, position: 'top'}">
           <div
             class="determinate"
             :class="[cat.progressColor]"
@@ -33,6 +33,11 @@
   import localizeFilter from "../filters/localize.filter";
   export default {
     name: 'Planing',
+    metaInfo() {
+      return {
+        title: this.$title('Menu_Planing')
+      }
+    },
     data: () => ({
       loading: true,
       categories: []

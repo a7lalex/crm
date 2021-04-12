@@ -57,9 +57,17 @@
   "message_EnterName": "Enter your name",
   "message_MustName": "The name must be larger",
   "message_HaveAccount": "Already have an account?",
-  "messege_AgreeRules": "I agree with the rules",
+  "message_AgreeRules": "I agree with the rules",
   "message_CreateNewRecords": "Create a new note",
   "message_LocalizeEdit": "Localization changed",
   "message_InfoUpdate": "Information updated",
-  "": ""
+  "message_SeeDetails": "See more details",
+  "message_logout": "You are logged out",
+  "message_Login": "To get started, log in",
+  "message_UserAddress": "There is no user with this email address",
+  "message_InvalidPassword": "Invalid password",
+  "message_EmailTaken": "Email already taken",
+  "message_Error": "[Error]:",
+  "message_RecordId": "Recording with id=",
+  "message_NotFound": "Not found"
 }

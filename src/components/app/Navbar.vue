@@ -46,6 +46,17 @@
       interval: null,
       dropdown: null,
     }),
+    methods: {
+      async logout() {
+        await this.$store.dispatch('logout')
+        await this.$router.push('/login?message=logout')
+      }
+    },
+    computed: {
+      name() {
+        return this.$store.getters.info.name
+      }
+    },
     mounted() {
       this.interval = setInterval(() => {
         this.date = new Date()
@@ -54,17 +65,6 @@
       this.dropdown = M.Dropdown.init(this.$refs.dropdown,{
         constrainWidth: false
       })
-    },
-    methods: {
-      async logout() {
-        await this.$store.dispatch('logout')
-        this.$router.push('/login?message=logout')
-      }
-    },
-    computed: {
-      name() {
-        return this.$store.getters.info.name
-      }
     },
     beforeDestroy() {
       clearInterval(this.interval)

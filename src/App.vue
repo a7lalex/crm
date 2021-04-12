@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <component :is="layout" :key="locale">
+    <component :is="layout">
       <router-view  />
     </component>
   </div>

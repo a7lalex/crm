@@ -1,7 +1,8 @@
+import localizeFilter from "../filters/localize.filter";
 export default {
-  'logout': 'Вы вышли из системы',
-  'login' : 'Для начала войдите в систему',
-  'auth/user-not-found': 'Пользователя с таким email не существует',
-  'auth/wrong-password': 'Неверный пароль',
-  'auth/email-already-in-use': 'Email уже занят'
+  'logout': localizeFilter('message_logout'),
+  'login' : localizeFilter('message_Login'),
+  'auth/user-not-found': localizeFilter('message_UserAddress'),
+  'auth/wrong-password': localizeFilter('message_InvalidPassword'),
+  'auth/email-already-in-use': localizeFilter('message_EmailTaken')
 }

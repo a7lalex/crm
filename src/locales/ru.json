@@ -60,5 +60,14 @@
   "message_AgreeRules": "С правилами согласен",
   "message_CreateNewRecords": "Создать новую заметку",
   "message_LocalizeEdit": "Локализация изменена",
-  "message_InfoUpdate": "Информация обнавлена"
+  "message_InfoUpdate": "Информация обнавлена",
+  "message_SeeDetails": "Смотреть подробней",
+  "message_logout": "Вы вышли из системы",
+  "message_Login": "Для начала войдите в систему",
+  "message_UserAddress": "Пользователя с таким email не существует",
+  "message_InvalidPassword": "Неверный пароль",
+  "message_EmailTaken": "Email уже занят",
+  "message_Error": "[Ошибка]:",
+  "message_RecordId": "Запись с id=",
+  "message_NotFound": "не найдена"
 }

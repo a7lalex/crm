@@ -58,7 +58,7 @@
           <input type="checkbox"
             v-model="agree"
           />
-          <span>{{'messege_AgreeRules' | localize}}</span>
+          <span>{{'message_AgreeRules' | localize}}</span>
         </label>
       </p>
     </div>
@@ -87,6 +87,11 @@
 
   export default {
     name: 'Register',
+    metaInfo() {
+      return {
+        title: this.$title('Register')
+      }
+    },
     data: () => ({
       email: '',
       password: '',
@@ -112,7 +117,7 @@
         }
         try {
           await this.$store.dispatch('register',formData)
-          this.$router.push('/')
+          await this.$router.push('/')
           // eslint-disable-next-line no-empty
         } catch (e) {}
 

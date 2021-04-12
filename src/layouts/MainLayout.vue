@@ -13,8 +13,10 @@
         </div>
       </main>
 
-      <div class="fixed-action-btn" v-tooltip="tooltip">
-        <router-link class="btn-floating btn-large blue" to="/record">
+      <div class="fixed-action-btn">
+        <router-link class="btn-floating btn-large blue" to="/record"
+           v-tooltip="{text: `${tooltip}`, position: 'left'}"
+           :key="locale">
           <i class="large material-icons">add</i>
         </router-link>
       </div>
@@ -32,14 +34,12 @@
     data: () => ({
       isOpen: true,
       loading: true,
-      tooltip: null
     }),
     async mounted() {
       if (!Object.keys(this.$store.getters.info).length) {
         await this.$store.dispatch('fetchInfo')
       }
       this.loading = false
-      this.tooltip = localizeFilter('message_CreateNewRecords')
     },
     components: {
       Navbar,
@@ -51,6 +51,9 @@
       },
       locale() {
         return this.$store.getters.info.locale
+      },
+      tooltip() {
+        return localizeFilter('message_CreateNewRecords')
       }
     },
     watch: {

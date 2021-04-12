@@ -36,6 +36,11 @@
     name: 'history',
     extends: Pie,
     mixins: [paginationMixin],
+    metaInfo() {
+      return {
+        title: this.$title('Menu_History')
+      }
+    },
     data:() => ({
       loading: true,
       records: []
@@ -67,7 +72,8 @@
             ...record,
             categoryName: categories.find(c => c.id === record.categoryId).title,
             typeClass: record.type === 'income' ? 'green' : 'red',
-            typeText: record.type === 'income' ? localizeFilter('Income') : localizeFilter('Outcome')
+            typeText: record.type === 'income' ? localizeFilter('Income') : localizeFilter('Outcome'),
+            tooltip: localizeFilter('message_SeeDetails' )
           }
         }))
 

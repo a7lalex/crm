@@ -5,7 +5,7 @@
       <div class="breadcrumb-wrap">
         <router-link to="/history" class="breadcrumb">{{'Menu_History' | localize}}</router-link>
         <a @click.prevent class="breadcrumb">
-          {{record.type === 'income' ? `'${localizeFilter('Outcome')}'` : 'Расход'}}
+          {{ record.type === 'income' ? 'Income' : 'Outcome' | localize }}
         </a>
       </div>
 
@@ -29,25 +29,32 @@
         </div>
       </div>
     </div>
-    <p class="center" v-else>Запись с id=<strong>{{$route.params.id}}</strong> не найдена</p>
+    <p class="center" v-else>{{'message_RecordId' | localize}}<strong>{{$route.params.id}}</strong>{{'message_RecordId' | localize}}</p>
   </div>
 
 </template>
 <script>
   export default {
     name: 'detail',
+    metaInfo() {
+      return {
+        title: this.$title('message_SeeDetails')
+      }
+    },
     data: () => ({
       record: null,
-      loading: true
+      loading: true,
     }),
     async mounted() {
       const id = this.$route.params.id
       const record = await this.$store.dispatch('fetchRecordById', id)
-      const category = await this.$store.dispatch('fetchCategoryById', record.categoryId)
+      const category = await this.$store.dispatch(
+        'fetchCategoryById',
+        record.categoryId)
 
       this.record = {
         ...record,
-        categoryName: category.title
+        categoryName: category.title,
       }
       this.loading = false
     }

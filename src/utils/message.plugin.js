@@ -1,3 +1,4 @@
+import localizeFilter from "../filters/localize.filter";
 export default {
   // eslint-disable-next-line no-unused-vars
   install(Vue,options) {
@@ -7,7 +8,7 @@ export default {
     }
     Vue.prototype.$error = function (html) {
       // eslint-disable-next-line no-undef
-      M.toast({html: `[Ошибка]: ${html}`})
+      M.toast({html: `${localizeFilter('message_Error')} ${html}`})
     }
   }
 }
