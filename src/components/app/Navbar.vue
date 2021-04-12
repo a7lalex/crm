@@ -41,11 +41,13 @@
 
 <script>
   export default {
-    data: () => ({
-      date: new Date(),
-      interval: null,
-      dropdown: null,
-    }),
+    data() {
+      return {
+        date: new Date(),
+        interval: null,
+        dropdown: null,
+      }
+    },
     methods: {
       async logout() {
         await this.$store.dispatch('logout')

@@ -41,10 +41,12 @@
         title: this.$title('Menu_History')
       }
     },
-    data:() => ({
-      loading: true,
-      records: []
-    }),
+    data() {
+      return {
+        loading: true,
+        records: []
+      }
+    },
     async mounted() {
       this.records = await this.$store.dispatch('fetchRecords')
       const categories = await this.$store.dispatch('fetchCategories')

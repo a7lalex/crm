@@ -62,12 +62,14 @@
       }
     },
     name: "EditCategories",
-    data:() => ({
-      select: null,
-      title: '',
-      limit: '',
-      current: null
-    }),
+    data() {
+      return {
+        select: null,
+        title: '',
+        limit: '',
+        current: null
+      }
+    },
     validations: {
       title: {required},
       limit: {minValue: minValue(100)}

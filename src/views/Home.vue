@@ -31,10 +31,12 @@ export default {
       title: this.$title('Menu_Bill')
     }
   },
-  data:() => ({
-    loading: true,
-    currency: null
-  }),
+  data() {
+    return {
+      loading: true,
+      currency: null
+    }
+  },
   async mounted() {
     this.currency = await this.$store.dispatch('fetchCurrency')
     this.loading = false

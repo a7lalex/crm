@@ -92,12 +92,14 @@
         title: this.$title('Register')
       }
     },
-    data: () => ({
-      email: '',
-      password: '',
-      name: '',
-      agree: false
-    }),
+    data() {
+      return {
+        email: '',
+        password: '',
+        name: '',
+        agree: false
+      }
+    },
     validations: {
       email: {email, required},
       password: {required,minLength: minLength(6)},

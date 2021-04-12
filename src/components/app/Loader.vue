@@ -15,13 +15,13 @@
 </template>
 
 <script>
-    export default {
-        name: "Loader.vue",
-      computed: {
-          color() {
-            const color = ['spinner-red-only','spinner-blue-only','spinner-green-only']
-            return color[Math.floor(Math.random()*color.length)]
-          }
+  export default {
+    name: "Loader.vue",
+    computed: {
+      color() {
+        const color = ['spinner-red-only','spinner-blue-only','spinner-green-only']
+        return color[Math.floor(Math.random()*color.length)]
       }
     }
+  }
 </script>

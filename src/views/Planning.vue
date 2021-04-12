@@ -38,10 +38,12 @@
         title: this.$title('Menu_Planing')
       }
     },
-    data: () => ({
-      loading: true,
-      categories: []
-    }),
+    data() {
+      return {
+        loading: true,
+        categories: []
+      }
+    },
     computed:{
       ...mapGetters(['info'])
     },

@@ -41,10 +41,12 @@
         title: this.$title('message_SeeDetails')
       }
     },
-    data: () => ({
-      record: null,
-      loading: true,
-    }),
+    data() {
+      return {
+        record: null,
+        loading: true,
+      }
+    },
     async mounted() {
       const id = this.$route.params.id
       const record = await this.$store.dispatch('fetchRecordById', id)

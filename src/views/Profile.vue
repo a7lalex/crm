@@ -44,10 +44,12 @@ export default {
       title: this.$title('ProfileTitle')
     }
   },
-  data: () => ({
-    name: '',
-    locale: false
-  }),
+  data() {
+    return {
+      name: '',
+      locale: false
+    }
+  },
   validations: {
     name: {required},
   },

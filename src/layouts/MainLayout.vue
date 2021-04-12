@@ -31,10 +31,12 @@
   import localizeFilter from "../filters/localize.filter";
   export default {
     name: 'main-layout',
-    data: () => ({
-      isOpen: true,
-      loading: true,
-    }),
+    data() {
+      return {
+        isOpen: true,
+        loading: true,
+      }
+    },
     async mounted() {
       if (!Object.keys(this.$store.getters.info).length) {
         await this.$store.dispatch('fetchInfo')

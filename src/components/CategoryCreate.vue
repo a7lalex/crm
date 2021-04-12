@@ -47,10 +47,12 @@
 
   export default {
     name: "CategoryCreate",
-    data:() =>({
-      title: '',
-      limit: 100
-    }),
+    data() {
+      return {
+        title: '',
+        limit: 100
+      }
+    },
     validations: {
       title: {required},
       limit: {minValue: minValue(100)}

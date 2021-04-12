@@ -91,15 +91,17 @@
         title: this.$title('Menu_NewRecord')
       }
     },
-    data:() => ({
-      loading: true,
-      categories: [],
-      select: null,
-      category: null,
-      type: 'outcome',
-      amount: 100,
-      description: '',
-    }),
+    data() {
+      return {
+        loading: true,
+        categories: [],
+        select: null,
+        category: null,
+        type: 'outcome',
+        amount: 100,
+        description: '',
+      }
+    },
     validations: {
       amount: {minValue: minValue(100)},
       description: {required},

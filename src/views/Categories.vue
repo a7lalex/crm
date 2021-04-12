@@ -29,11 +29,13 @@
         title: this.$title('Menu_Categories')
       }
     },
-    data:() => ({
-      categories:[],
-      loading: true,
-      updateCount: 0
-    }),
+    data() {
+      return {
+        categories:[],
+        loading: true,
+        updateCount: 0
+      }
+    },
     async mounted() {
       this.categories = await this.$store.dispatch('fetchCategories')
       this.loading = false

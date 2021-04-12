@@ -17,9 +17,11 @@
 <script>
   export default {
     props: ['rates'],
-    data: () => ({
-      currency: ['RUB','USD','EUR']
-    }),
+    data() {
+      return {
+        currency: ['RUB','USD','EUR']
+      }
+    },
     computed: {
       base() {
         return this.$store.getters.info.bill / (this.rates['RUB'] / this.rates['EUR'])

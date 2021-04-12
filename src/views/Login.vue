@@ -66,10 +66,12 @@
         title: this.$title('Login')
       }
     },
-    data: () => ({
-      email: '',
-      password: ''
-    }),
+    data() {
+      return {
+        email: '',
+        password: ''
+      }
+    },
     validations: {
       email: {email, required},
       password: {required,minLength: minLength(6)}

@@ -29,8 +29,10 @@
 <script>
   export default {
     props:['rates', 'date'],
-    data: () => ({
-      currency: ['RUB','USD','EUR']
-    }),
+    data() {
+      return {
+        currency: ['RUB','USD','EUR']
+      }
+    },
   }
 </script>
