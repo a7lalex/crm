@@ -8,7 +8,7 @@
         <span class="black-text">{{date | date('datetime')}}</span>
       </div>
 
-      <ul class="right hide-on-small-and-down">
+      <ul class="right">
         <li>
           <a
             class="dropdown-trigger black-text"
