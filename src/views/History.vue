@@ -13,7 +13,7 @@
     <p class="center" v-else-if="!records.length">{{'message_RecordsNot' | localize}}
       <router-link to="/record">{{'message_AddNewRecord' | localize}}</router-link></p>
 
-    <section v-else>
+    <section v-else class="table">
       <HistoryTable :records="items"/>
       <Paginate
         v-model="page"
